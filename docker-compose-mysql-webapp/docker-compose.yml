@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  flask:
+    build: ./webapp/
+    container_name: flask-web
+    ports:
+      - "5000:5000"
+    depends_on:
+      - 'mysql'
+    networks:
+      - flask-web
+    
+    
+  
+  mysql:
+    image: mysql:latest
+    container_name: mysql-flask
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin 
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_HOST: 0.0.0.0
+      MYSQL_DATABASE: employees
+    ports:
+      - "3306:3306"
+    networks:
+      - flask-web
+    volumes:
+    - ./init-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  flask-web:
+    driver: bridge
+
+
+
+
