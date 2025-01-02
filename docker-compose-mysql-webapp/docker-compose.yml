@@ -13,7 +13,7 @@ services:
     
     
   
-  mysql:
+  mysql-service:
     image: mysql:latest
     container_name: mysql-flask
     environment:

@@ -4,7 +4,7 @@ import mysql.connector
 app = Flask(__name__)
 
 def connection_to_mysql():
-    mysql = { 'host':'mysql', 'user': 'admin' , 'password':'admin','database': 'employees','port':'3306'}
+    mysql = { 'host':'mysql-service', 'user': 'admin' , 'password':'admin','database': 'employees','port':'3306'}
     return mysql
 
 
